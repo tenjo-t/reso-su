@@ -1,4 +1,6 @@
 ---
+import { pub } from "../utils";
+
 type Props = {
   param: string;
   logo?: string;
@@ -10,11 +12,11 @@ const { param, logo, title, url } = Astro.props;
 ---
 
 <div class="card">
-  <a class="link" href={`/feed/${param}`}>
+  <a class="link" href={pub(`feed/${param}`)}>
     <div class="img-cover shadow">
       {
         logo ? (
-          <img class="img" src={logo} alt={`${title} logo`} />
+          <img class="img" src={pub(logo)} alt={`${title} logo`} />
         ) : (
           <div class="initial">{title[0]}</div>
         )

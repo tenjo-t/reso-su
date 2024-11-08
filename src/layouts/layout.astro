@@ -6,7 +6,8 @@ import "../styles/typography.css";
 
 import Footer from "./footer.astro";
 import Header from "./header.astro";
-import Sidebar from "./sidebar.astro";
+
+import { pub } from "../utils";
 ---
 
 <!doctype html>
@@ -15,13 +16,22 @@ import Sidebar from "./sidebar.astro";
     <meta charset="utf-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="RSSA" />
-    <link rel="manifest" href="/site.webmanifest" /> -->
-    <title>ReSo-Su</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href={pub("favicon-48x48.png")}
+      sizes="48x48"
+    />
+    <link rel="icon" type="image/svg+xml" href={pub("favicon.svg")} />
+    <link rel="shortcut icon" href={pub("favicon.ico")} />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={pub("apple-touch-icon.png")}
+    />
+    <meta name="apple-mobile-web-app-title" content="Reso-su" />
+    <link rel="manifest" href={pub("site.webmanifest")} />
+    <title>Reso-su</title>
   </head>
   <body>
     <Header />

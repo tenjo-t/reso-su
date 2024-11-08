@@ -1,17 +1,18 @@
 ---
 import { siteList } from "../feed/list";
+import { pub } from "../utils";
 ---
 
 <header class="header">
   <h1 class="title">
-    <a class="link" href="/">
-      <img class="img" src="/favicon.svg" alt="Reso-su" />
+    <a class="link" href={pub("")}>
+      <img class="img" src={pub("favicon.svg")} alt="Reso-su" />
       Reso-su
     </a>
   </h1>
   <div>
     <a href="">
-      <img class="github-img" src="/logo/github.svg" alt="GitHub" />
+      <img class="github-img" src={pub("logo/github.svg")} alt="GitHub" />
     </a>
   </div>
   <div>
@@ -32,9 +33,9 @@ import { siteList } from "../feed/list";
           <li>
             <div class="nav-title">Feed</div>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/all">All</a></li>
-              <li><a href="/weekly">Weekly</a></li>
+              <li><a href={pub("")}>Home</a></li>
+              <li><a href={pub("all")}>All</a></li>
+              <li><a href={pub("weekly")}>Weekly</a></li>
             </ul>
           </li>
           <li>
@@ -43,7 +44,7 @@ import { siteList } from "../feed/list";
               {
                 siteList.map((site) => (
                   <li>
-                    <a href={`/feed/${site.param}`}>{site.title}</a>
+                    <a href={pub(`feed/${site.param}`)}>{site.title}</a>
                   </li>
                 ))
               }
