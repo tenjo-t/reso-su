@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/layout.astro";
+import Section from "../layouts/section.astro";
+import Title from "../components/title.astro";
+import FeedItem from "../components/feed-item.astro";
+
+import { collectAllItems } from "../feed/fetch";
+import { siteList } from "../feed/list";
+
+const items = await collectAllItems(siteList);
+---
+
+<Layout>
+  <main class="content">
+    <Section>
+      <Title>All</Title>
+      <div class="items">
+        {
+          items.map((item) => (
+            <FeedItem
+              link={item.link}
+              pubDate={item.pubDate}
+              site={item.site}
+              title={item.title}
+              creator={item.creator}
+              contentSnippet={item.contentSnippet}
+            />
+          ))
+        }
+      </div>
+    </Section>
+  </main>
+</Layout>
+
+<style>
+  .items {
+    padding-top: 40px;
+  }
+</style>

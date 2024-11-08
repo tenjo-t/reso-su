@@ -1,0 +1,48 @@
+---
+import type { ItemForAll } from "../feed/fetch";
+
+import Layout from "../layouts/layout.astro";
+import Section from "../layouts/section.astro";
+import Title from "../components/title.astro";
+import FeedItem from "../components/feed-item.astro";
+
+import { collectAllItems } from "../feed/fetch";
+import { siteList } from "../feed/list";
+
+const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+const items = await collectAllItems(siteList);
+const weekly = items.reduce<ItemForAll[]>((pre, cur) => {
+  if (cur.pubDate > oneWeekAgo) {
+    pre.push(cur);
+  }
+  return pre;
+}, []);
+---
+
+<Layout>
+  <main class="content">
+    <Section>
+      <Title>Weekly</Title>
+      <div class="items">
+        {
+          weekly.map((item) => (
+            <FeedItem
+              link={item.link}
+              pubDate={item.pubDate}
+              site={item.site}
+              title={item.title}
+              creator={item.creator}
+              contentSnippet={item.contentSnippet}
+            />
+          ))
+        }
+      </div>
+    </Section>
+  </main>
+</Layout>
+
+<style>
+  .items {
+    padding-top: 40px;
+  }
+</style>

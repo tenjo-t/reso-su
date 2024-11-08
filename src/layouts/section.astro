@@ -1,0 +1,28 @@
+---
+type Props = {
+  bg?: string;
+};
+
+const { bg } = Astro.props;
+---
+
+<section class="section" style={bg && `--bg: ${bg}`}><slot /></section>
+
+<style>
+  .section {
+    background-color: var(--bg);
+
+    padding: 40px 32px 96px;
+  }
+
+  .section > :global(*) {
+    margin: 0 auto;
+    max-width: var(--max-width);
+  }
+
+  @media screen and (width <= 600px) {
+    .section {
+      padding-inline: 24px;
+    }
+  }
+</style>

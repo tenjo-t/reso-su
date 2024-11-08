@@ -1,0 +1,94 @@
+---
+type Props = {
+  link: string;
+  pubDate: string;
+  title: string;
+  creator?: string;
+  contentSnippet?: string;
+  site?: string;
+};
+
+const { link, pubDate, title, creator, contentSnippet, site } = Astro.props;
+---
+
+<div class="item">
+  <a class="link shadow" href={link}>
+    <article>
+      <div class="info">
+        {new Date(pubDate).toLocaleDateString()}{site && " @" + site}
+      </div>
+      <h1 class="title">{title}</h1>
+      {creator && <div class="creator">{creator}</div>}
+      {contentSnippet && <p class="desc">{contentSnippet}</p>}
+    </article>
+  </a>
+</div>
+
+<style>
+  .items {
+    padding-top: 48px;
+  }
+
+  .item + .item {
+    margin-top: 16px;
+  }
+
+  .link {
+    background-color: var(--bg-75);
+    border: 1px solid var(--border-decorative-100);
+    border-radius: 16px;
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+    --shadow-color: var(--gray-300);
+  }
+
+  .link:hover,
+  .link:focus {
+    background-color: var(--bg-75);
+    border-color: var(--border-orange-200);
+  }
+
+  .link:active {
+    background-color: var(--bg-75);
+    border-color: var(--border-orange-300);
+  }
+
+  .info {
+    color: var(--text-orange-100);
+    font-size: var(--body-s);
+  }
+
+  .title {
+    font-size: var(--heading-m);
+    line-height: var(--line-height-100);
+    padding-top: 8px;
+  }
+
+  .desc {
+    color: var(--subdued-100);
+    display: -webkit-box;
+    font-size: var(--detail-m);
+    line-height: var(--line-height-100);
+    overflow: hidden;
+    padding-top: 12px;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  @media screen and (max-width: 800px) {
+    .date {
+      font-size: var(--body-m);
+    }
+
+    .title {
+      text-wrap-style: auto;
+    }
+
+    .content {
+      font-size: var(--detail-l);
+    }
+  }
+</style>

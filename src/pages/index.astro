@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/layout.astro";
+import Section from "../layouts/section.astro";
+import FeedItem from "../components/feed-item.astro";
+import LinkButton from "../components/link-button.astro";
+import LinkCard from "../components/link-card.astro";
+import Title from "../components/title.astro";
+
+import { collectAllItems } from "../feed/fetch";
+import { siteList } from "../feed/list";
+
+const items = await collectAllItems(siteList);
+---
+
+<Layout>
+  <main class="content">
+    <Section>
+      <Title>Recent</Title>
+      <div class="items">
+        {
+          items
+            .slice(0, 5)
+            .map((item) => (
+              <FeedItem
+                link={item.link}
+                pubDate={item.pubDate}
+                site={item.site}
+                title={item.title}
+                creator={item.creator}
+                contentSnippet={item.contentSnippet}
+              />
+            ))
+        }
+      </div>
+      <div class="link">
+        <LinkButton href="/weekly">もっと見る</LinkButton>
+      </div>
+    </Section>
+    <Section bg="var(--orange-100)">
+      <Title>Feeds</Title>
+      <div class="feed-list">
+        {
+          siteList.map((s) => (
+            <LinkCard
+              param={s.param}
+              logo={s.logo}
+              title={s.title}
+              url={s.url}
+            />
+          ))
+        }
+      </div>
+    </Section>
+  </main>
+</Layout>
+
+<style>
+  .items {
+    padding-top: 40px;
+  }
+
+  .link {
+    padding-top: 32px;
+  }
+
+  .feed-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    padding-top: 16px;
+  }
+
+  .feed {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 144px;
+  }
+</style>

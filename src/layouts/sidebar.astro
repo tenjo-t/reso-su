@@ -1,0 +1,45 @@
+---
+import { siteList } from "../feed/list";
+---
+
+<aside class="sidebar">
+  <nav>
+    <section>
+      <ul>
+        <li><a href="/all">All</a></li>
+        <li><a href="/weekly">Weekly</a></li>
+      </ul>
+      <h2 class="title">FEEDS</h2>
+      <ul>
+        {
+          siteList.map((s) => (
+            <li>
+              <a href={`/feed/${s.param}`}>{s.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </nav>
+</aside>
+
+<style>
+  .sidebar {
+    padding: 16px;
+  }
+
+  .sidebar section + section {
+    padding-top: 16px;
+  }
+
+  .title {
+    color: var(--subdued-100);
+    font-size: var(--heading-xxs);
+  }
+
+  @media screen and (width <= 600px) {
+    .sidebar {
+      display: none;
+    }
+  }
+</style>

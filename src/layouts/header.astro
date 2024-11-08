@@ -1,0 +1,129 @@
+---
+import { siteList } from "../feed/list";
+---
+
+<header class="header">
+  <h1 class="title">
+    <a class="link" href="/">
+      <img class="img" src="/favicon.svg" alt="Reso-su" />
+      Reso-su
+    </a>
+  </h1>
+  <div>
+    <a href="">
+      <img class="github-img" src="/logo/github.svg" alt="GitHub" />
+    </a>
+  </div>
+  <div>
+    <button class="global-nav-button open" popovertarget="nav-dialog">
+      = Menu
+    </button>
+    <dialog
+      id="nav-dialog"
+      class="global-nav-dialog shadow"
+      style="--shadow-color: var(--gray-800)"
+      popover
+    >
+      <nav class="global-nav">
+        <button class="global-nav-button close" popovertarget="nav-dialog">
+          X Close
+        </button>
+        <ul>
+          <li>
+            <div class="nav-title">Feed</div>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/all">All</a></li>
+              <li><a href="/weekly">Weekly</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="nav-title">Site</div>
+            <ul>
+              {
+                siteList.map((site) => (
+                  <li>
+                    <a href={`/feed/${site.param}`}>{site.title}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </dialog>
+  </div>
+</header>
+
+<script></script>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--border-decorative-200);
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr 32px 72px;
+    margin: 0 auto;
+    max-width: var(--max-width);
+    padding: 8px 32px;
+  }
+
+  .header > * {
+    margin-block: auto;
+  }
+
+  .link {
+    text-decoration: none;
+  }
+
+  .title {
+    font-size: var(--heading-s);
+  }
+
+  .img {
+    display: inline-block;
+    height: calc(var(--heading-s));
+    vertical-align: text-top;
+  }
+
+  .github-img {
+    height: calc(var(--heading-s) * var(--heading-line-height));
+  }
+
+  .global-nav-button {
+    anchor-name: --anchor;
+    border-radius: 8px;
+    padding: 4px 8px;
+    transition: all 0.1s;
+  }
+
+  .global-nav-button.close {
+    display: block;
+    margin-left: auto;
+  }
+
+  .global-nav-button:hover,
+  .global-nav-button:focus {
+    background-color: var(--bg-200);
+  }
+
+  .global-nav-dialog {
+    background-color: var(--bg-75);
+    border: 1px solid var(--border-decorative-100);
+    border-radius: 16px;
+    color: var(--text-100);
+    margin: auto;
+    padding: 16px 24px;
+    position-anchor: --anchor;
+    right: 16px; /* fallback */
+    right: anchor(right);
+    top: 8px; /* fallback */
+    top: anchor(top);
+  }
+
+  .nav-title {
+    color: var(--subdued-100);
+    font-weight: bold;
+    padding-top: 16px;
+  }
+</style>

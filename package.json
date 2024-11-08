@@ -1,0 +1,27 @@
+{
+	"name": "reso-su",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"devh": "astro dev --host",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@acab/reset.css": "^0.10.0",
+		"@astrojs/check": "^0.9.4",
+		"astro": "^4.16.6",
+		"rss-parser": "^3.13.0",
+		"typescript": "^5.6.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4"
+	},
+	"engines": {
+		"node": ">=22.4.1"
+	},
+	"packageManager": "npm@10.9.0+sha512.65a9c38a8172948f617a53619762cd77e12b9950fe1f9239debcb8d62c652f2081824b986fee7c0af6c0a7df615becebe4bf56e17ec27214a87aa29d9e038b4b"
+}

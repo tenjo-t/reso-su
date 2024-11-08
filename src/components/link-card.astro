@@ -1,0 +1,92 @@
+---
+type Props = {
+  param: string;
+  logo?: string;
+  title: string;
+  url: string;
+};
+
+const { param, logo, title, url } = Astro.props;
+---
+
+<div class="card">
+  <a class="link" href={`/feed/${param}`}>
+    <div class="img-cover shadow">
+      {
+        logo ? (
+          <img class="img" src={logo} alt={`${title} logo`} />
+        ) : (
+          <div class="initial">{title[0]}</div>
+        )
+      }
+    </div>
+    <div class="title">{title}</div>
+  </a>
+  <a class="url" href={url} target="_blank" rel="noopener noreferrer">
+    {url}
+  </a>
+</div>
+
+<style>
+  .card {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: calc(var(--size) + var(--padding) * 2 + var(--text, 0px));
+    --padding: 32px;
+    --size: 80px;
+  }
+
+  .link {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .img-cover {
+    background-color: white;
+    border-radius: var(--padding);
+    margin-inline: auto;
+    overflow: hidden;
+    padding: var(--padding);
+    transition: all 0.2s;
+    width: fit-content;
+  }
+
+  .img-cover:hover,
+  .img-cover:focus {
+    --shadow-color: var(--text-orange-100);
+  }
+
+  .img {
+    height: var(--size);
+    width: var(--size);
+  }
+
+  .initial {
+    font-size: var(--heading-xxl);
+    height: var(--size);
+    line-height: var(--size);
+    width: var(--size);
+  }
+
+  .title {
+    font-size: var(--heading-m);
+    line-height: 1;
+    padding-top: 16px;
+  }
+
+  .url {
+    word-break: break-all;
+    display: block;
+    text-align: center;
+  }
+
+  @media screen and (width <= 600px) {
+    .card {
+      --padding: 24px;
+      --size: 64px;
+      --text: 16px;
+    }
+  }
+</style>
