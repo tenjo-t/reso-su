@@ -21,12 +21,13 @@ const { title, description, items } = Astro.props;
 ---
 
 <Layout>
-  <main class="content">
+  <main>
     <Section>
-      <Title>{title}</Title>
-      {description && <p class="description">{description}</p>}
-
-      <div class="items">
+      <div>
+        <Title>{title}</Title>
+        {description && <p>{description}</p>}
+      </div>
+      <div class="grid gap-4">
         {
           items.map((item) => (
             <FeedItem
@@ -42,19 +43,3 @@ const { title, description, items } = Astro.props;
     </Section>
   </main>
 </Layout>
-
-<style>
-  .description {
-    padding-top: 8px;
-  }
-  .items {
-    padding-top: 40px;
-  }
-
-  @media screen and (width <= 600px) {
-    .description {
-      padding-top: 16px;
-      font-size: var(--body-m);
-    }
-  }
-</style>

@@ -13,10 +13,10 @@ const items = await collectAllItems(siteList);
 ---
 
 <Layout>
-  <main class="content">
+  <main>
     <Section>
       <Title>Recent</Title>
-      <div class="items">
+      <div class="grid gap-4">
         {
           items
             .slice(0, 5)
@@ -32,13 +32,11 @@ const items = await collectAllItems(siteList);
             ))
         }
       </div>
-      <div class="link">
-        <LinkButton href="weekly">もっと見る</LinkButton>
-      </div>
+      <LinkButton href="weekly">もっと見る</LinkButton>
     </Section>
-    <Section bg="var(--orange-100)">
+    <Section class="bg-amber-400/10">
       <Title>Feeds</Title>
-      <div class="feed-list">
+      <div class="flex flex-wrap justify-center gap-8">
         {
           siteList.map((s) => (
             <LinkCard
@@ -53,27 +51,3 @@ const items = await collectAllItems(siteList);
     </Section>
   </main>
 </Layout>
-
-<style>
-  .items {
-    padding-top: 40px;
-  }
-
-  .link {
-    padding-top: 32px;
-  }
-
-  .feed-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px;
-    padding-top: 16px;
-  }
-
-  .feed {
-    flex-grow: 0;
-    flex-shrink: 0;
-    width: 144px;
-  }
-</style>

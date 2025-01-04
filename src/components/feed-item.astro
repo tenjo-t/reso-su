@@ -1,5 +1,5 @@
 ---
-import { pub } from "../utils";
+import { Icon } from "astro-icon/components";
 
 type Props = {
   link: string;
@@ -13,84 +13,28 @@ type Props = {
 const { link, pubDate, title, creator, contentSnippet, site } = Astro.props;
 ---
 
-<div class="item">
-  <a class="link shadow" href={link}>
-    <article>
-      <div class="info">
-        {new Date(pubDate).toLocaleDateString()}{site && " @" + site}
-      </div>
-      <h1 class="title">{title}</h1>
-      {creator && <div class="creator">{creator}</div>}
-      {contentSnippet && <p class="desc">{contentSnippet}</p>}
-    </article>
-  </a>
-</div>
-
-<style>
-  .items {
-    padding-top: 48px;
-  }
-
-  .item + .item {
-    margin-top: 16px;
-  }
-
-  .link {
-    background-color: var(--bg-75);
-    border: 1px solid var(--border-decorative-100);
-    border-radius: 16px;
-    display: block;
-    padding: 16px;
-    text-decoration: none;
-    transition: all 0.2s;
-    --shadow-color: var(--gray-300);
-  }
-
-  .link:hover,
-  .link:focus {
-    background-color: var(--bg-75);
-    border-color: var(--border-orange-200);
-  }
-
-  .link:active {
-    background-color: var(--bg-75);
-    border-color: var(--border-orange-300);
-  }
-
-  .info {
-    color: var(--text-orange-100);
-    font-size: var(--body-s);
-  }
-
-  .title {
-    font-size: var(--heading-m);
-    line-height: var(--line-height-100);
-    padding-top: 8px;
-  }
-
-  .desc {
-    color: var(--subdued-100);
-    display: -webkit-box;
-    font-size: var(--detail-m);
-    line-height: var(--line-height-100);
-    overflow: hidden;
-    padding-top: 12px;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
-
-  @media screen and (max-width: 800px) {
-    .date {
-      font-size: var(--body-m);
+<a
+  class="block p-4 border border-zinc-300 hover:border-amber-600 focus:border-amber-600 bg-zinc-50 active:bg-zinc-100 rounded-lg transition-all"
+  href={link}
+>
+  <article>
+    <div class="flex items-center gap-1 text-sm text-amber-700">
+      <Icon name="lucide:calendar" />
+      {new Date(pubDate).toLocaleDateString("ja-JP")}{site && "　@" + site}
+    </div>
+    <h1 class="pt-2 text-xl text-zinc-900 font-bold">{title}</h1>
+    {
+      creator && (
+        <div class="flex items-center gap-1">
+          <Icon name="lucide:user-round-pen" />
+          {creator}
+        </div>
+      )
     }
-
-    .title {
-      text-wrap-style: auto;
+    {
+      contentSnippet && (
+        <p class="pt-4 text-sm text-zinc-600 line-clamp-2">{contentSnippet}</p>
+      )
     }
-
-    .content {
-      font-size: var(--detail-l);
-    }
-  }
-</style>
+  </article>
+</a>
