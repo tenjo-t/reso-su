@@ -52,4 +52,12 @@ export const siteList = [
 		logo: "",
 		creator: "azukiazusa1",
 	},
+	{
+		rss: "https://blog.sakupi01.com/feed.xml",
+		url: "https://blog.sakupi01.com/dev",
+		title: "Saku's blog",
+		param: "saku_blog",
+		logo: "",
+		creator: "saku",
+	},
 ] satisfies SiteInfo[];

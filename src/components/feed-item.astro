@@ -33,7 +33,9 @@ const { link, pubDate, title, creator, contentSnippet, site } = Astro.props;
     }
     {
       contentSnippet && (
-        <p class="pt-4 text-sm text-zinc-600 line-clamp-2">{contentSnippet}</p>
+        <p class="pt-4 text-sm text-zinc-600 line-clamp-2 text-ellipsis break-words break-all">
+          {contentSnippet}
+        </p>
       )
     }
   </article>
