@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   schedule:
     # NOTE: UTCなので9時間引く
-    - cron: 0 22,2,6,10,14 * * *
+    - cron: 0 2,10 * * *
   workflow_dispatch:
 
 jobs:
