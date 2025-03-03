@@ -1,8 +1,5 @@
 ---
-import "@acab/reset.css";
 import "../styles/base.css";
-import "../styles/color.css";
-import "../styles/typography.css";
 
 import Footer from "./footer.astro";
 import Header from "./header.astro";
@@ -33,13 +30,11 @@ import { pub } from "../utils";
     <link rel="manifest" href={pub("site.webmanifest")} />
     <title>Reso-su</title>
   </head>
-  <body>
+  <body class="bg-zinc-100 text-zinc-800">
     <Header />
-    <div class="container">
+    <div class="py-8">
       <slot />
     </div>
     <Footer />
   </body>
 </html>
-
-<style></style>

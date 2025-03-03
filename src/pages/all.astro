@@ -11,10 +11,10 @@ const items = await collectAllItems(siteList);
 ---
 
 <Layout>
-  <main class="content">
+  <main>
     <Section>
       <Title>All</Title>
-      <div class="items">
+      <div class="grid gap-4">
         {
           items.map((item) => (
             <FeedItem
@@ -31,9 +31,3 @@ const items = await collectAllItems(siteList);
     </Section>
   </main>
 </Layout>
-
-<style>
-  .items {
-    padding-top: 40px;
-  }
-</style>

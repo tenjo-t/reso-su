@@ -11,84 +11,27 @@ type Props = {
 const { param, logo, title, url } = Astro.props;
 ---
 
-<div class="card">
-  <a class="link" href={pub(`feed/${param}`)}>
-    <div class="img-cover shadow">
+<div class="w-36">
+  <a class="block" href={pub(`feed/${param}`)}>
+    <div
+      class="p-8 bg-white rounded-2xl hover:shadow-amber-600/10 focus:shadow-amber-600/10 hover:shadow-lg focus:shadow-lg transition-all"
+    >
       {
         logo ? (
-          <img class="img" src={pub(logo)} alt={`${title} logo`} />
+          <img class="w-20 h-20" src={pub(logo)} alt={`${title} logo`} />
         ) : (
-          <div class="initial">{title[0]}</div>
+          <div class="w-20 h-20 text-5xl text-center font-bold">{title[0]}</div>
         )
       }
     </div>
-    <div class="title">{title}</div>
+    <div class="pt-1 text-xl text-center font-bold leading-tight">{title}</div>
   </a>
-  <a class="url" href={url} target="_blank" rel="noopener noreferrer">
+  <a
+    class="block text-center break-all underline hover:no-underline focus:no-underline leading-none"
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
     {url}
   </a>
 </div>
-
-<style>
-  .card {
-    flex-grow: 0;
-    flex-shrink: 0;
-    width: calc(var(--size) + var(--padding) * 2 + var(--text, 0px));
-    --padding: 32px;
-    --size: 80px;
-  }
-
-  .link {
-    display: block;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  .img-cover {
-    background-color: white;
-    border-radius: var(--padding);
-    margin-inline: auto;
-    overflow: hidden;
-    padding: var(--padding);
-    transition: all 0.2s;
-    width: fit-content;
-  }
-
-  .img-cover:hover,
-  .img-cover:focus {
-    --shadow-color: var(--text-orange-100);
-  }
-
-  .img {
-    height: var(--size);
-    width: var(--size);
-  }
-
-  .initial {
-    font-size: var(--heading-xxl);
-    height: var(--size);
-    line-height: var(--size);
-    width: var(--size);
-  }
-
-  .title {
-    font-size: var(--heading-m);
-    line-height: 1;
-    padding-top: 16px;
-  }
-
-  .url {
-    word-break: break-all;
-    display: block;
-    text-align: center;
-  }
-
-  @media screen and (width <= 600px) {
-    .card {
-      --padding: 24px;
-      --size: 64px;
-      --text: 16px;
-    }
-  }
-</style>

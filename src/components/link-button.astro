@@ -8,27 +8,9 @@ type Props = {
 const { href } = Astro.props;
 ---
 
-<a class="link" href={pub(href)}><slot /></a>
-
-<style>
-  .link {
-    background-color: var(--text-100);
-    border-radius: 9999px;
-    color: var(--bg-50);
-    display: block;
-    margin-inline: auto;
-    max-width: 192px;
-    padding: 10px 32px 8px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .link:hover,
-  .link:focus {
-    background-color: var(--text-200);
-    box-shadow: var(--focus-ring-offset-shadow, 0 0 #0000),
-      var(--focus-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    --tw-shadow: 0 10px 15px -3px #00000011, 0 4px 6px -4px #00000011;
-  }
-</style>
+<a
+  class="block mx-auto pt-3 px-8 pb-2 max-w-48 bg-zinc-800 hover:bg-zinc-900 focus:bg-zinc-900 text-white text-center rounded-full transition-colors"
+  href={pub(href)}
+>
+  <slot />
+</a>

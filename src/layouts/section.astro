@@ -1,28 +1,19 @@
 ---
 type Props = {
-  bg?: string;
+  class?: string;
 };
 
-const { bg } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<section class="section" style={bg && `--bg: ${bg}`}><slot /></section>
+<section class:list={["pt-10 px-6 pb-24 sm:px-8", className]}>
+  <div class="grid gap-12 mx-auto max-w-3xl">
+    <slot />
+  </div>
+</section>
 
 <style>
   .section {
     background-color: var(--bg);
-
-    padding: 40px 32px 96px;
-  }
-
-  .section > :global(*) {
-    margin: 0 auto;
-    max-width: var(--max-width);
-  }
-
-  @media screen and (width <= 600px) {
-    .section {
-      padding-inline: 24px;
-    }
   }
 </style>
