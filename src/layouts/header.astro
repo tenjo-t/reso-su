@@ -5,58 +5,6 @@ import { siteList } from "../feed/list";
 import { pub } from "../utils";
 ---
 
-<<<<<<< HEAD
-<header class="header">
-  <h1 class="title">
-    <a class="link" href={pub("")}>
-      <img class="img" src={pub("favicon.svg")} alt="Reso-su" />
-      Reso-su
-    </a>
-  </h1>
-  <div>
-    <a href="https://tenjo-t.github.io/reso-su/">
-      <img class="github-img" src={pub("logo/github.svg")} alt="GitHub" />
-    </a>
-  </div>
-  <div>
-    <button class="global-nav-button open" popovertarget="nav-dialog">
-      = Menu
-    </button>
-    <dialog
-      id="nav-dialog"
-      class="global-nav-dialog shadow"
-      style="--shadow-color: var(--gray-800)"
-      popover
-    >
-      <nav class="global-nav">
-        <button class="global-nav-button close" popovertarget="nav-dialog">
-          X Close
-        </button>
-        <ul>
-          <li>
-            <div class="nav-title">Feed</div>
-            <ul>
-              <li><a href={pub("")}>Home</a></li>
-              <li><a href={pub("all")}>All</a></li>
-              <li><a href={pub("weekly")}>Weekly</a></li>
-            </ul>
-          </li>
-          <li>
-            <div class="nav-title">Site</div>
-            <ul>
-              {
-                siteList.map((site) => (
-                  <li>
-                    <a href={pub(`feed/${site.param}`)}>{site.title}</a>
-                  </li>
-                ))
-              }
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </dialog>
-=======
 <header class="border-b border-zinc-300">
   <div class="flex items-center justify-between mx-auto px-4 py-2 max-w-4xl">
     <h1 class="title">
@@ -136,7 +84,6 @@ import { pub } from "../utils";
         </nav>
       </dialog>
     </div>
->>>>>>> 6fe6654a98018eefc9f2b43f998b09c2c549bed9
   </div>
 </header>
 
